@@ -44,11 +44,6 @@ public class ThreadSafeWithSynchronization {
                 System.out.println("wrote");
                 this.notify();
             }
-            try {
-                Thread.sleep(1000);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         }
     });
 
@@ -65,6 +60,7 @@ public class ThreadSafeWithSynchronization {
                     randomsQueue.offer(n);
                     System.out.println(n);
                     System.out.println("wrote");
+                    System.out.println(randomsQueue.size());
                     i++;
                     try {
                         this.notify();
@@ -73,11 +69,6 @@ public class ThreadSafeWithSynchronization {
                         e.printStackTrace();
                     }
                 }
-            }
-            try {
-                Thread.sleep(1000);
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         }
     });
@@ -95,6 +86,7 @@ public class ThreadSafeWithSynchronization {
                     }
                 }
                 System.out.println(randomsQueue.poll());
+                System.out.println(randomsQueue.size());
                 System.out.println("read");
                 this.notify();
             }
